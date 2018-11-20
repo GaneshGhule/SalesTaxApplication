@@ -1,6 +1,6 @@
 package app.product;
 
-import exception.InvalidOrderQuantityException;
+import app.exception.InvalidOrderQuantityException;
 
 /**
  * 

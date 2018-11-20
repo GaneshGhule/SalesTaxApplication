@@ -4,11 +4,11 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+import app.exception.InvalidProductPriceException;
 import app.product.Product;
 import app.product.ProductBuilder;
 import app.product.ProductType;
 import app.util.CommonUtil;
-import exception.InvalidProductPriceException;
 
 /**
  * Product test cases 

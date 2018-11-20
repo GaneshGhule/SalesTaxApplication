@@ -2,9 +2,9 @@ package app.product;
 
 import java.util.Objects;
 
+import app.exception.InvalidProductPriceException;
 import app.tax.SalesTax;
 import app.tax.Tax;
-import exception.InvalidProductPriceException;
 
 /**
  * 

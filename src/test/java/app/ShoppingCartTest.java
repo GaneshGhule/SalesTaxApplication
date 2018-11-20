@@ -8,12 +8,12 @@ import java.util.Locale;
 import org.junit.Test;
 
 import app.cart.ShoppingCart;
+import app.exception.InvalidOrderQuantityException;
 import app.product.Product;
 import app.product.ProductBuilder;
 import app.product.ProductOrder;
 import app.product.ProductType;
 import app.util.CommonUtil;
-import exception.InvalidOrderQuantityException;
 
 /**
  * shopping cart test cases

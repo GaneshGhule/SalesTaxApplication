@@ -9,11 +9,11 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
+import app.exception.InvalidOrderQuantityException;
+import app.exception.InvalidProductPriceException;
 import app.product.Order;
 import app.product.ProductType;
 import app.util.CommonUtil;
-import exception.InvalidOrderQuantityException;
-import exception.InvalidProductPriceException;
 
 /**
  * Utility class test cases

@@ -8,9 +8,9 @@ import java.util.function.Predicate;
 
 import app.bill.BillReceipt;
 import app.bill.BillReceiptPrinter;
+import app.exception.InvalidOrderException;
 import app.product.Order;
 import app.product.Product;
-import exception.InvalidOrderException;
 
 /**
  * 

@@ -6,12 +6,12 @@ import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
 
+import app.exception.InvalidOrderQuantityException;
 import app.product.Order;
 import app.product.Product;
 import app.product.ProductBuilder;
 import app.product.ProductOrder;
 import app.product.ProductType;
-import exception.InvalidOrderQuantityException;
 
 /**
  * Product order test cases 

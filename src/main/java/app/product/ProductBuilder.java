@@ -1,6 +1,6 @@
 package app.product;
 
-import exception.InvalidProductPriceException;
+import app.exception.InvalidProductPriceException;
 
 /**
  * 
