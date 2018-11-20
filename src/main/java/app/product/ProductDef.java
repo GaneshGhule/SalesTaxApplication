@@ -119,7 +119,7 @@ public class ProductDef implements Product {
 		}
 		if (obj instanceof Product) {
 			ProductDef p = (ProductDef) obj;
-			if (p.getDisplayName().equalsIgnoreCase(displayName) && productType == p.getProductType()) {
+			if (p.getDisplayName().equalsIgnoreCase(displayName) && productType == p.getProductType() && p.isImported == isImported) {
 				return true;
 			}
 		}
