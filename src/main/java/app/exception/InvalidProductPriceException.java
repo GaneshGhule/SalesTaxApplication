@@ -12,8 +12,8 @@ public class InvalidProductPriceException extends RuntimeException {
 	public InvalidProductPriceException() {
 		this("Invalid product price");
 	}
-	
-    public InvalidProductPriceException(String msg) {
+
+	public InvalidProductPriceException(String msg) {
 		super(msg);
 	}
 }

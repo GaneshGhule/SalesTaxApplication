@@ -9,11 +9,17 @@ import app.product.Order;
  */
 public interface Cart {
 
-	public void  addOrder(Order order);
+	public void addOrder(Order order);
+
 	public float getTotalCostWithoutTax();
+
 	public float getTotalCost();
+
 	public float getSalesTax();
+
 	public void printReceipt();
+
 	public int getSize();
+
 	public void reset();
 }

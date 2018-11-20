@@ -7,6 +7,8 @@ package app.product;
  */
 public interface Order {
 	public Product getProduct();
-	public int getQuantity() ;
-	public void setQuantity(int quantity) ;
+
+	public int getQuantity();
+
+	public void setQuantity(int quantity);
 }

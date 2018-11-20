@@ -83,6 +83,7 @@ public class ReadInput {
 
 	/**
 	 * Read new item from cli.
+	 * 
 	 * @param itemCount
 	 * @return
 	 */
@@ -106,7 +107,7 @@ public class ReadInput {
 			order.setQuantity(quantity);
 			return order;
 		} catch (Exception e) {
-			System.out.println("Failed to read item :"+itemCount+" "+e.getMessage());
+			System.out.println("Failed to read item :" + itemCount + " " + e.getMessage());
 		}
 		return null;
 	}

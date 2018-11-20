@@ -19,18 +19,18 @@ public class SalesTax implements Tax {
 	 * Additional tax for imported products.
 	 */
 	private static final float IMPORT_TAX = 5.0f / 100;
-	
+
 	/**
-	 * Tax exempted 
+	 * Tax exempted
 	 */
 	private static final float NO_TAX = 0.0f;
-	
+
 	/**
 	 * Calculate sales tax for given product
 	 */
 	public float calculateTax(Product product) {
-		 float taxPercentage = getTaxPercentage(product);
-		 float salesTax  = product.getPrice() * taxPercentage;
+		float taxPercentage = getTaxPercentage(product);
+		float salesTax = product.getPrice() * taxPercentage;
 		return CommonUtil.roundOff(salesTax);
 	}
 
@@ -40,21 +40,21 @@ public class SalesTax implements Tax {
 	 * @param product
 	 * @return
 	 */
-	
-	public  float getTaxPercentage(Product product) {
-		
+
+	public float getTaxPercentage(Product product) {
+
 		float taxPercentage;
 
-		if(product.isExempted()) {
+		if (product.isExempted()) {
 			taxPercentage = NO_TAX;
-		}else {
+		} else {
 			taxPercentage = TAX_PERCENTAGE;
 		}
-		
-		if(product.isImported()) {
-			taxPercentage = taxPercentage+IMPORT_TAX;
+
+		if (product.isImported()) {
+			taxPercentage = taxPercentage + IMPORT_TAX;
 		}
-		
+
 		return taxPercentage;
 	}
 }

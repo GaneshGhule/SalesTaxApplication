@@ -13,7 +13,7 @@ import app.tax.Tax;
  */
 public class ProductDef implements Product {
 
-	private static final Tax taxCalculator = new SalesTax(); 
+	private static final Tax taxCalculator = new SalesTax();
 
 	/**
 	 * Product displayName
@@ -56,17 +56,17 @@ public class ProductDef implements Product {
 	public void setImported(boolean isImported) {
 		this.isImported = isImported;
 	}
-	
+
 	@Override
 	public boolean isImported() {
 		return isImported;
 	}
-	
+
 	@Override
 	public boolean isExempted() {
 		return isExempted;
 	}
-	
+
 	@Override
 	public ProductType getProductType() {
 		return productType;
@@ -75,10 +75,10 @@ public class ProductDef implements Product {
 	public void setProductType(ProductType productType) {
 		this.productType = productType;
 	}
-	
+
 	@Override
 	public String getDescription() {
-		return productType+"-"+displayName+(isImported ? "(I)":"" );
+		return productType + "-" + displayName + (isImported ? "(I)" : "");
 	}
 
 	@Override
@@ -93,17 +93,17 @@ public class ProductDef implements Product {
 		}
 		this.price = price;
 	}
-	
+
 	@Override
 	public float getPriceWithTax() {
 		return price + taxCalculator.calculateTax(this);
 	}
-	
+
 	@Override
 	public float getSaleTax() {
 		return taxCalculator.calculateTax(this);
 	}
-	
+
 	@Override
 	public int hashCode() {
 		int hasCode = 17;
@@ -126,7 +126,7 @@ public class ProductDef implements Product {
 
 		return false;
 	}
-	
+
 	@Override
 	public String toString() {
 		return productType + "-" + "-" + displayName + "-" + (isImported ? "Imported" : "Not Imported");

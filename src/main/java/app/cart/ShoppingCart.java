@@ -22,24 +22,24 @@ public class ShoppingCart implements Cart {
 	/**
 	 * Not required in this class
 	 */
-	//private Currency currency;
-	
+	// private Currency currency;
+
 	private BillReceipt receipt;
-	
+
 	private final ConcurrentHashMap<Product, Order> orderStore = new ConcurrentHashMap<>();
-	
+
 	Predicate<Object> isNullObj = Objects::isNull;
-	
-	public ShoppingCart(Currency currency ){
-		
-		//this.currency = currency;
-		
-		this.receipt  = new BillReceiptPrinter(currency);
+
+	public ShoppingCart(Currency currency) {
+
+		// this.currency = currency;
+
+		this.receipt = new BillReceiptPrinter(currency);
 	}
 
 	/**
-	 * Add product order in cart.
-	 * If order already exist in cart then increment quantity of order.
+	 * Add product order in cart. If order already exist in cart then increment
+	 * quantity of order.
 	 */
 	@Override
 	public void addOrder(Order order) {
@@ -47,93 +47,93 @@ public class ShoppingCart implements Cart {
 		if (isNullObj.test(order) || isNullObj.test(order.getProduct())) {
 			throw new InvalidOrderException();
 		}
-		
-		orderStore.merge(order.getProduct(), order,(oldOrder,newOrder) -> {
-		   oldOrder.setQuantity(oldOrder.getQuantity()+newOrder.getQuantity());
-		   return oldOrder;
+
+		orderStore.merge(order.getProduct(), order, (oldOrder, newOrder) -> {
+			oldOrder.setQuantity(oldOrder.getQuantity() + newOrder.getQuantity());
+			return oldOrder;
 		});
 	}
-	
+
 	/**
 	 * Return the size of store.
+	 * 
 	 * @return
 	 */
 	public int getSize() {
 		return orderStore.size();
 	}
 
-
 	/**
 	 * Calculate Total bill amount and sales tax
+	 * 
 	 * @param onlyTax
 	 * @param totalWithoutTax
 	 * @return
 	 */
-	public float calculateTotal(boolean onlyTax,boolean totalWithoutTax) {
+	public float calculateTotal(boolean onlyTax, boolean totalWithoutTax) {
 		float totalCost = 0.0f;
 		float totalSalesTax = 0.0f;
-		
-		for(Entry<Product, Order> entry : orderStore.entrySet()) {
+
+		for (Entry<Product, Order> entry : orderStore.entrySet()) {
 			Product product = entry.getKey();
 			Order order = entry.getValue();
-			
+
 			totalCost += product.getPriceWithTax() * order.getQuantity();
 			totalSalesTax += product.getSaleTax() * order.getQuantity();
 		}
-		
-		if(onlyTax) {
+
+		if (onlyTax) {
 			return totalSalesTax;
 		}
-		if(totalWithoutTax) {
+		if (totalWithoutTax) {
 			return totalCost - totalSalesTax;
 		}
-		
+
 		return totalCost;
 	}
-	
+
 	/**
-	 * Shopping cart total bill amount with sales tax. 
+	 * Shopping cart total bill amount with sales tax.
 	 */
 	@Override
 	public float getTotalCost() {
-		return calculateTotal(false,false);
+		return calculateTotal(false, false);
 	}
 
-
 	/**
-	 * Shopping cart total sales tax. 
+	 * Shopping cart total sales tax.
 	 */
 	@Override
 	public float getSalesTax() {
-		return calculateTotal(true,false);
+		return calculateTotal(true, false);
 	}
 
 	/**
-	 * Shopping cart total bill amount without sales tax. 
+	 * Shopping cart total bill amount without sales tax.
 	 */
 	@Override
 	public float getTotalCostWithoutTax() {
-		return calculateTotal(false,true);
+		return calculateTotal(false, true);
 	}
-	
+
 	/**
 	 * Print bill receipt for shopping cart items.
 	 */
 	@Override
 	public void printReceipt() {
 		receipt.printHeader();
-		
+
 		float totalCost = 0.0f;
 		float totalSalesTax = 0.0f;
-		
-		for(Entry<Product, Order> entry : orderStore.entrySet()) {
+
+		for (Entry<Product, Order> entry : orderStore.entrySet()) {
 			Product product = entry.getKey();
 			Order order = entry.getValue();
 			receipt.printOrder(order);
 			totalCost += product.getPriceWithTax() * order.getQuantity();
 			totalSalesTax += product.getSaleTax() * order.getQuantity();
 		}
-		
+
 		receipt.printTotal(totalCost, totalSalesTax);
 		receipt.printFooter();
 	}

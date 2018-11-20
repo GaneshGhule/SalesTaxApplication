@@ -8,7 +8,7 @@ import app.exception.InvalidProductPriceException;
  *
  */
 public class ProductBuilder {
-	
+
 	/**
 	 * Product displayName
 	 */

@@ -34,18 +34,19 @@ public class CommonUtil {
 
 	/**
 	 * Round up value
+	 * 
 	 * @param value
 	 * @return
 	 */
 	public static double roundPrice(float value) {
 
-		return new BigDecimal(value).setScale(2, RoundingMode.HALF_UP)
-				.doubleValue();
+		return new BigDecimal(value).setScale(2, RoundingMode.HALF_UP).doubleValue();
 
 	}
-	
+
 	/**
-	 * Read single order item. 
+	 * Read single order item.
+	 * 
 	 * @param productTypStr
 	 * @param name
 	 * @param quantityStr
@@ -71,11 +72,12 @@ public class CommonUtil {
 
 	/**
 	 * Read items input file and return order list.
+	 * 
 	 * @param fileName
 	 * @return
 	 * @throws IOException
 	 */
-	public static ArrayList<Order> parseItems(String fileName) throws IOException{
+	public static ArrayList<Order> parseItems(String fileName) throws IOException {
 		ArrayList<Order> orders = new ArrayList<>();
 		try (BufferedReader br = new BufferedReader(new FileReader("./src/main/java/app/" + fileName))) {
 			String str;

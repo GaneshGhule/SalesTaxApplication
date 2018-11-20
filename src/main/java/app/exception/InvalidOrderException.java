@@ -12,9 +12,9 @@ public class InvalidOrderException extends RuntimeException {
 	public InvalidOrderException() {
 		this("Invalid product order");
 	}
-	
-    public InvalidOrderException(String msg) {
+
+	public InvalidOrderException(String msg) {
 		super(msg);
 	}
-    
+
 }

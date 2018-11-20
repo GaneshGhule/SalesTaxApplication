@@ -9,8 +9,11 @@ import app.product.Order;
  */
 public interface BillReceipt {
 
-	void  printHeader();
+	void printHeader();
+
 	void printFooter();
-	void printTotal(float total,float totalTax);
-	void  printOrder(Order order);
+
+	void printTotal(float total, float totalTax);
+
+	void printOrder(Order order);
 }
